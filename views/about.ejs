@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whispering | About</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="/">Whispering</a></li>
+      <li><a href="/about" class="menu-link-about">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrap">
+
+    <div class="about-hero">
+      <!-- IMAGE -->
+      <div class="about-image-col">
+        <div class="image-frame">
+          <img src="people.png" alt="Women working together in a Parisian café">
+        </div>
+      </div>
+
+      <!-- TEXT -->
+      <div class="about-text-col">
+        <div class="section-tag">✦ Our story</div>
+        <h1 class="about-title">Welcome to<br><em>Whispering</em></h1>
+        <p class="about-desc">
+          A microblogging platform that allows you to share your thoughts
+          with the world and learn Node.js on the way. Simple, beautiful,
+          and made with love. 🌸
+        </p>
+      </div>
+    </div>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-dots">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="section-title">Community live ⚡</div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-number"><%= whispers.length %></span>
+        <span class="stat-label">Whispers shared</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">∞</span>
+        <span class="stat-label">Stories to tell</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">1</span>
+        <span class="stat-label">Community</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
