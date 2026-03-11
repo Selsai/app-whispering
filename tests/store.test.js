@@ -19,7 +19,7 @@ describe('store', () => {
   })
 
   describe('getById', () => {
-    it("Should return undefined when there is no item with the given id", async () => {
+    it('Should return undefined when there is no item with the given id', async () => {
       const item = await getById(inventedId)
       expect(item).toBeUndefined()
     })
@@ -31,12 +31,12 @@ describe('store', () => {
 
   describe('create', () => {
     it('Should return the created item', async () => {
-      const newItem = { id: whispers.length + 1, message: 'test 3' }
+      const newItem = { id: whispers.length + 1, message: 'test 3', likes: 0 }
       const item = await create(newItem.message)
       expect(item).toEqual(newItem)
     })
     it('Should add the item to the db', async () => {
-      const newItem = { id: whispers.length + 1, message: 'test 3' }
+      const newItem = { id: whispers.length + 1, message: 'test 3', likes: 0 }
       const { id } = await create(newItem.message)
       const item = await getById(id)
       expect(item).toEqual(newItem)
@@ -44,17 +44,17 @@ describe('store', () => {
   })
 
   describe('updateById', () => {
-    it("Should return undefined when there is no item with the given id", async () => {
+    it('Should return undefined when there is no item with the given id', async () => {
       const item = await updateById(inventedId)
       expect(item).toBeUndefined()
     })
     it('Should not return the updated item', async () => {
-      const updatedItem = { id: existingId, message: 'updated' }
+      const updatedItem = { id: existingId, message: 'updated', likes: 0 }
       const item = await updateById(updatedItem.id, updatedItem.message)
       expect(item).toBeUndefined()
     })
     it('Should update the item in the db', async () => {
-      const updatedItem = { id: existingId, message: 'updated' }
+      const updatedItem = { id: existingId, message: 'updated', likes: 0 }
       await updateById(updatedItem.id, updatedItem.message)
       const item = await getById(existingId)
       expect(item).toEqual(updatedItem)
@@ -62,7 +62,7 @@ describe('store', () => {
   })
 
   describe('deleteById', () => {
-    it("Should return undefined when there is no item with the given id", async () => {
+    it('Should return undefined when there is no item with the given id', async () => {
       const item = await deleteById(inventedId)
       expect(item).toBeUndefined()
     })
