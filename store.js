@@ -19,16 +19,20 @@ const getById = async (id) => {
 
 const create = async (message) => {
   const data = await readData()
-  const newItem = { message, id: data.length + 1 }
+  const newItem = { message, id: data.length + 1, likes: 0 }
   await saveChanges(data.concat([newItem]))
   return newItem
 }
 
-const updateById = async (id, message) => {
+const updateById = async (id, message, likes = null) => {
   const data = await readData()
   const newData = data.map(current => {
     if (current.id === id) {
-      return { ...current, message }
+      return {
+        ...current,
+        message,
+        likes: likes !== null ? likes : (current.likes || 0)
+      }
     }
     return current
   })
@@ -40,4 +44,20 @@ const deleteById = async id => {
   await saveChanges(data.filter(current => current.id !== id))
 }
 
-export { getAll, getById, create, updateById, deleteById }
+const likeById = async (id) => {
+  const data = await readData()
+  let found = false
+  const newData = data.map(current => {
+    if (current.id === id) {
+      found = true
+      const currentLikes = current.likes || 0
+      return { ...current, likes: currentLikes }
+    }
+    return current
+  })
+  if (!found) return undefined
+  await saveChanges(newData)
+  return newData.find(item => item.id === id)
+}
+
+export { getAll, getById, create, updateById, deleteById, likeById }

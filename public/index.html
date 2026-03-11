@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,19 +12,23 @@
   <div class="blob blob-2"></div>
   <div class="blob blob-3"></div>
 
+  <!-- CANVAS CONFETTI -->
+  <canvas id="confettiCanvas"></canvas>
+
   <nav class="menu">
     <ul>
       <li><a href="/">Whispering</a></li>
-      <li><a href="/about" class="menu-link-about">About</a></li>
+      <li class="nav-right">
+        <a href="/about" class="menu-link-about">About</a>
+        <button class="dark-toggle" id="darkToggle" title="Toggle dark mode">🌙</button>
+      </li>
     </ul>
   </nav>
 
   <div class="page-wrap">
 
-    <!-- HERO SPLIT LAYOUT -->
+    <!-- HERO SPLIT -->
     <div class="home-hero">
-
-      <!-- LEFT : TEXT -->
       <div class="home-hero-text">
         <div class="hero-tag">✦ Community Platform</div>
         <h1 class="hero-title">Share your<br><em>whispers</em><br>with the world</h1>
@@ -39,8 +43,8 @@
           </div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat">
-            <span class="hero-stat-num">∞</span>
-            <span class="hero-stat-label">Stories</span>
+            <span class="hero-stat-num" id="totalLikes">—</span>
+            <span class="hero-stat-label">Likes</span>
           </div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat">
@@ -50,7 +54,6 @@
         </div>
       </div>
 
-      <!-- RIGHT : IMAGE -->
       <div class="home-hero-image">
         <div class="home-image-wrap">
           <div class="home-image-frame">
@@ -58,7 +61,22 @@
           </div>
         </div>
       </div>
+    </div>
 
+    <!-- SEARCH BAR -->
+    <div class="search-wrap">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input
+          type="text"
+          id="searchInput"
+          class="search-input"
+          placeholder="Search whispers..."
+          autocomplete="off"
+        >
+        <button class="search-clear" id="searchClear">✕</button>
+      </div>
+      <div class="search-results-count" id="searchResultsCount"></div>
     </div>
 
     <!-- DIVIDER -->
@@ -70,7 +88,6 @@
       <div class="divider-line"></div>
     </div>
 
-    <!-- WHISPERS SECTION -->
     <div class="section-title">Latest whispers ✨</div>
     <div class="whispers-grid" id="whispers"></div>
 

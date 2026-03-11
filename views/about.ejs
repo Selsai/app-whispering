@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,21 +15,20 @@
   <nav class="menu">
     <ul>
       <li><a href="/">Whispering</a></li>
-      <li><a href="/about" class="menu-link-about">About</a></li>
+      <li class="nav-right">
+        <a href="/about" class="menu-link-about">About</a>
+        <button class="dark-toggle" id="darkToggle" title="Toggle dark mode">🌙</button>
+      </li>
     </ul>
   </nav>
 
   <div class="page-wrap">
-
     <div class="about-hero">
-      <!-- IMAGE -->
       <div class="about-image-col">
         <div class="image-frame">
           <img src="people.png" alt="Women working together in a Parisian café">
         </div>
       </div>
-
-      <!-- TEXT -->
       <div class="about-text-col">
         <div class="section-tag">✦ Our story</div>
         <h1 class="about-title">Welcome to<br><em>Whispering</em></h1>
@@ -65,7 +64,21 @@
         <span class="stat-label">Community</span>
       </div>
     </div>
-
   </div>
+
+  <script>
+    // Dark mode — même logique que index
+    const darkToggle = document.getElementById('darkToggle')
+    const root = document.documentElement
+    const applyTheme = (theme) => {
+      root.setAttribute('data-theme', theme)
+      darkToggle.textContent = theme === 'dark' ? '☀️' : '🌙'
+      localStorage.setItem('theme', theme)
+    }
+    applyTheme(localStorage.getItem('theme') || 'light')
+    darkToggle.addEventListener('click', () => {
+      applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark')
+    })
+  </script>
 </body>
 </html>
